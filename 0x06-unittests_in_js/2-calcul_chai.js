@@ -1,19 +1,16 @@
-function calculateNumber(type, a, b) {
-    const n1 = Math.round(a);
-    const n2 = Math.round(b);
-  
-    if (type === 'SUBTRACT') {
-      return n1 - n2;
-    }
-  
-    if (type === 'DIVIDE') {
-      if (n2 === 0) {
+const calculateNumber = (type, a, b) => {
+    if (type === 'SUM') {
+      return Math.round(a) + Math.round(b);
+    } else if (type === 'SUBTRACT') {
+      return Math.round(a) - Math.round(b);
+    } else if (type === 'DIVIDE') {
+      const roundedB = Math.round(b);
+      if (roundedB == 0) {
         return 'Error';
       }
-      return n1 / n2;
+      return Math.round(a) / roundedB;
     }
-  
-    return n1 + n2;
-  }
+  };
   
   module.exports = calculateNumber;
+  

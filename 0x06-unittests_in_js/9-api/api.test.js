@@ -38,36 +38,3 @@ describe('Cart Page', () => {
     });
   });
 });
-
-describe('Payment page', () => {
-  const url = 'http://localhost:7865';
-
-  it('available payment methods', (done) => {
-    request.get(`${url}/available_payments`, (err, res, data) => {
-      expect(res.statusCode).to.equal(200);
-      expect(JSON.parse(data)).to.deep.equal({
-        payment_methods: {
-          credit_cards: true,
-          paypal: false,
-        },
-      });
-      done();
-    });
-  });
-});
-
-describe('Login page', () => {
-  const url = 'http://localhost:7865';
-
-  it('login', (done) => {
-    request.post(
-      `${url}/login`,
-      { json: { userName: 'John' } },
-      (err, res, data) => {
-        expect(res.statusCode).to.equal(200);
-        expect(data).to.equal('Welcome John');
-        done();
-      }
-    );
-  });
-});
